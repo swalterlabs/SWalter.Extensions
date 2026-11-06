@@ -1,30 +1,48 @@
 <Project>
-  <PropertyGroup>
-    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-    <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
-  </PropertyGroup>
-  <!-- #region Project Libs -->
-  <ItemGroup>
-    <PackageVersion Include="EvilBaschdi.Core" Version="2026.8.21.10" />
-    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.14" />
-    <PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="10.0.14" />
-    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="10.0.14" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.14" />
-    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.14" />
-    <PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.14" />
-    <PackageVersion Include="Microsoft.Sbom.Targets" Version="4.1.13" />
-  </ItemGroup>
-  <!-- #endregion Project Libs -->
-  <!-- #region Unit Test Libs -->
-  <ItemGroup Condition="$(MSBuildProjectName.EndsWith('.Tests'))">
-    <PackageVersion Include="coverlet.collector" Version="10.1.0" />
-    <PackageVersion Include="EvilBaschdi.Testing" Version="2026.10.13.18" />
-    <PackageVersion Include="AwesomeAssertions.Analyzers" Version="9.0.8" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.11.0" />
-    <PackageVersion Include="NSubstitute.Analyzers.CSharp" Version="1.0.17" />
-    <PackageVersion Include="xunit.v3" Version="4.0.2" />
-    <PackageVersion Include="xunit.analyzers" Version="2.2.0" />
-    <PackageVersion Include="xunit.runner.visualstudio" Version="4.0.1" />
-  </ItemGroup>
-  <!-- #endregion Unit Test Libs -->
+	<PropertyGroup>
+		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+		<CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
+	</PropertyGroup>
+	<!-- #region Project Libs -->
+	<ItemGroup>
+		<PackageVersion Include="EvilBaschdi.Core" Version="2026.8.21.10" />
+		<PackageVersion Include="Microsoft.Sbom.Targets" Version="4.1.13" />
+	</ItemGroup>
+	<Choose>
+		<!-- .NET 10.0 specific versions -->
+		<When Condition=" '$(TargetFramework)' == 'net10.0' ">
+			<ItemGroup>
+				<PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.14" />
+				<PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="10.0.14" />
+				<PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="10.0.14" />
+				<PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.14" />
+				<PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.14" />
+				<PackageVersion Include="Microsoft.Extensions.Logging" Version="10.0.14" />
+			</ItemGroup>
+		</When>
+		<!-- .NET 11.0 specific versions -->
+		<!--<When Condition=" '$(TargetFramework)' == 'net11.0' ">
+			<ItemGroup>
+				<PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="11.0.0" />
+				<PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="11.0.0" />
+				<PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="11.0.0" />
+				<PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="11.0.0" />
+				<PackageVersion Include="Microsoft.Extensions.Hosting" Version="11.0.0" />
+				<PackageVersion Include="Microsoft.Extensions.Logging" Version="11.0.0" />
+			</ItemGroup>
+		</When>-->
+	</Choose>
+	<!-- #endregion Project Libs -->
+	<!-- #region Unit Test Libs -->
+	<ItemGroup Condition="$(MSBuildProjectName.EndsWith('.Tests'))">
+		<PackageVersion Include="coverlet.collector" Version="10.1.0" />
+		<PackageVersion Include="EvilBaschdi.Testing" Version="2026.10.13.18" />
+		<PackageVersion Include="AwesomeAssertions.Analyzers" Version="9.0.8" />
+		<PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.11.0" />
+		<PackageVersion Include="NSubstitute.Analyzers.CSharp" Version="1.0.17" />
+		<PackageVersion Include="xunit.v3" Version="4.0.2" />
+		<PackageVersion Include="xunit.analyzers" Version="2.2.0" />
+		<PackageVersion Include="xunit.runner.visualstudio" Version="4.0.1" />
+	</ItemGroup>
+	<!-- #endregion Unit Test Libs -->
 </Project>

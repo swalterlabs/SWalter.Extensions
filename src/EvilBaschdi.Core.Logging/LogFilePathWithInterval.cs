@@ -11,7 +11,7 @@ public class LogFilePathWithInterval : ILogFilePathWithInterval
         ArgumentNullException.ThrowIfNull(extension);
 
         var timestampFormat = interval.ToTimestampFormat();
-        return Path.Combine(loggingPath, $"{appName}_{currentLoggingDateTime.ToString(timestampFormat)}.{extension}");
+        return Path.Combine(loggingPath, $"{appName}_{currentLoggingDateTime.ToString(timestampFormat, CultureInfo.InvariantCulture)}.{extension}");
     }
 
     /// <inheritdoc />

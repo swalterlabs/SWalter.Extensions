@@ -19,8 +19,6 @@ public class FileLoggerConfiguration : IFileLoggerConfiguration
         set => _logDirectory = value ?? throw new ArgumentNullException(nameof(value));
     }
 
-    private string _logFileNamePattern = "app-{date}.log";
-
     /// <summary>
     ///     Gets or sets the log file name pattern.
     ///     Use {date} as a placeholder for the timestamp based on <see cref="LogInterval" />.
@@ -28,9 +26,9 @@ public class FileLoggerConfiguration : IFileLoggerConfiguration
     /// </summary>
     public string LogFileNamePattern
     {
-        get => _logFileNamePattern;
-        set => _logFileNamePattern = value ?? throw new ArgumentNullException(nameof(value));
-    }
+        get;
+        set => field = value ?? throw new ArgumentNullException(nameof(value));
+    } = "app-{date}.log";
 
     /// <summary>
     ///     Gets or sets the log interval.
@@ -95,7 +93,7 @@ public class FileLoggerConfiguration : IFileLoggerConfiguration
     {
         var logDir = GetLogDirectory();
         var timestampFormat = LogInterval.ToTimestampFormat();
-        var logFileName = LogFileNamePattern.Replace("{date}", DateTime.Now.ToString(timestampFormat));
+        var logFileName = LogFileNamePattern.Replace("{date}", DateTime.Now.ToString(timestampFormat, CultureInfo.InvariantCulture));
         return Path.Combine(logDir, logFileName);
     }
 

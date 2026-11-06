@@ -14,7 +14,7 @@ public static class LoggingFileIntervalExtensions
     {
         ArgumentNullException.ThrowIfNull(value);
 
-        return value.ToLower() switch
+        return value.ToLower(CultureInfo.InvariantCulture) switch
         {
             "per minute" => LoggingFileInterval.PerMinute,
             "per hour" => LoggingFileInterval.PerHour,

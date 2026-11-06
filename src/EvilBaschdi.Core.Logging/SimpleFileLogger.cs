@@ -81,7 +81,7 @@ public sealed class SimpleFileLogger(
 
         if (_includeTimestamp)
         {
-            var timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            var timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture);
             entry += $"[{timestamp}] ";
         }
 
