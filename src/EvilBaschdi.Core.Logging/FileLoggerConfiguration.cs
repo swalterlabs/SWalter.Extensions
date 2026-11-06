@@ -7,17 +7,15 @@ namespace EvilBaschdi.Core.Logging;
 /// </summary>
 public class FileLoggerConfiguration : IFileLoggerConfiguration
 {
-    private string _logDirectory = Path.Combine(AppContext.BaseDirectory, "logs");
-
     /// <summary>
     ///     Gets or sets the base directory where logs will be stored.
     ///     Defaults to {AppContext.BaseDirectory}/logs
     /// </summary>
     public string LogDirectory
     {
-        get => _logDirectory;
-        set => _logDirectory = value ?? throw new ArgumentNullException(nameof(value));
-    }
+        get;
+        set => field = value ?? throw new ArgumentNullException(nameof(value));
+    } = Path.Combine(AppContext.BaseDirectory, "logs");
 
     /// <summary>
     ///     Gets or sets the log file name pattern.
@@ -47,16 +45,14 @@ public class FileLoggerConfiguration : IFileLoggerConfiguration
     /// </summary>
     public LogLevel MinimumLogLevel { get; set; } = LogLevel.Debug;
 
-    private string _headline;
-
     /// <summary>
     ///     Gets or sets the headline for the log file.
     ///     If provided, it will be written as the first line of a new log file.
     /// </summary>
     public string Headline
     {
-        get => _headline;
-        set => _headline = value ?? throw new ArgumentNullException(nameof(value));
+        get;
+        set => field = value ?? throw new ArgumentNullException(nameof(value));
     }
 
     /// <summary>
