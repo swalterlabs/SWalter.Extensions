@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 		<Authors>Sebastian Walter</Authors>
-		<Company>evilbaschdi (Sebastian Walter)</Company>
-		<Copyright>Copyright © 2020 - $([System.DateTime]::UtcNow.ToString(yyyy)) evilbaschdi</Copyright>
+		<Company>SWalter Labs</Company>
+		<Copyright>Copyright © 2020 - $([System.DateTime]::UtcNow.ToString(yyyy)) SWalter Labs</Copyright>
 		<DebugSymbols>true</DebugSymbols>
 		<DebugType>full</DebugType>
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(MSBuildProjectName).xml</DocumentationFile>
@@ -12,15 +12,17 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<IsPackable>true</IsPackable>
 		<LangVersion>preview</LangVersion>
+		<PackageId>$(MSBuildProjectName)</PackageId>
 		<PackageIcon>icon.png</PackageIcon>
-		<PackageIconUrl><![CDATA[https://avatars1.githubusercontent.com/u/1897807?s=120&v=4]]></PackageIconUrl>
-		<PackageProjectUrl>https://github.com/evilbaschdi/EvilBaschdi.Extensions</PackageProjectUrl>
+		<PackageIconUrl><![CDATA[https://avatars.githubusercontent.com/u/323152839?s=180&v=4]]></PackageIconUrl>
+		<PackageProjectUrl>https://github.com/swalterlabs/SWalter.Extensions</PackageProjectUrl>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
-		<RepositoryUrl>https://github.com/evilbaschdi/EvilBaschdi.Extensions</RepositoryUrl>
+		<RepositoryUrl>https://github.com/swalterlabs/SWalter.Extensions</RepositoryUrl>
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<TargetFramework>net10.0</TargetFramework>
+		<!--<TargetFramework>net12.0</TargetFramework>-->
+		<TargetFrameworks>net11.0;net10.0</TargetFrameworks>
 		<VersionPrefix>$([System.DateTime]::UtcNow.ToString(yyyy.M.d.H))</VersionPrefix>
 	</PropertyGroup>
 
@@ -29,7 +31,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Using Include="EvilBaschdi.Core" />
+		<Using Include="SWalter.Core" />
 		<Using Include="JetBrains.Annotations" />
 	</ItemGroup>
 
@@ -46,7 +48,7 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="EvilBaschdi.Core" />
+		<PackageReference Include="SWalter.Core" />
 	</ItemGroup>
 
 	<Choose>
@@ -58,6 +60,7 @@
 		</When>
 		<When Condition="$(MSBuildProjectName.EndsWith('.Logging'))">
 			<ItemGroup>
+				<Using Include="System.Globalization" />
 				<PackageReference Include="Microsoft.Extensions.Logging" />
 			</ItemGroup>
 		</When>
@@ -80,16 +83,16 @@
 			<ItemGroup>
 				<Using Include="AutoFixture.Idioms" />
 				<Using Include="AutoFixture.Xunit3" />
-				<Using Include="EvilBaschdi.Testing" />
+				<Using Include="SWalter.Testing" />
 				<Using Include="AwesomeAssertions" />
-				<Using Include="EvilBaschdi.Testing.Assertions.Microsoft.Extensions.DependencyInjection" />
+				<Using Include="SWalter.Testing.Assertions.Microsoft.Extensions.DependencyInjection" />
 				<Using Include="NSubstitute" />
 				<Using Include="NSubstitute.ReturnsExtensions" />
 				<Using Include="Xunit" />
 			</ItemGroup>
 
 			<ItemGroup>
-				<PackageReference Include="EvilBaschdi.Testing" />
+				<PackageReference Include="SWalter.Testing" />
 				<PackageReference Include="xunit.v3" />
 				<PackageReference Include="Microsoft.NET.Test.Sdk" />
 				<PackageReference Include="coverlet.collector">

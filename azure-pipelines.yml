@@ -24,9 +24,9 @@ extends:
   template: buildNPackMultiStage.yml@templates # Template reference
   parameters:
     projects:
-      - EvilBaschdi.Core.DependencyInjection
-      - EvilBaschdi.Core.Logging
-      - EvilBaschdi.Core.Settings
+      - SWalter.Core.DependencyInjection
+      - SWalter.Core.Logging
+      - SWalter.Core.Settings
     framework: net10.0
     projectsParentDirectory: src/
     testsParentDirectory: tests/

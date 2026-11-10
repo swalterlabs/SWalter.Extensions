@@ -1,4 +1,4 @@
-# EvilBaschdi.Extensions Project Mandates
+# SWalter.Extensions Project Mandates
 
 This file serves as the foundational instruction set for Gemini CLI. It references and prioritizes the specialized instructions found in the `.github/instructions/` directory.
 

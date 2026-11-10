@@ -56,13 +56,13 @@ public class AppSettingByKey(
 ## Global Usings Available
 
 These usings are available globally (via `Directory.Build.props`):
-- `EvilBaschdi.Core`
+- `SWalter.Core`
 - `JetBrains.Annotations`
 
 Conditional Global Usings:
 - `.DependencyInjection` projects: `Microsoft.Extensions.Hosting`, `Microsoft.Extensions.DependencyInjection`
 - `.Settings` projects: `Microsoft.Extensions.Configuration.Binder`, `Microsoft.Extensions.Configuration.FileExtensions`, `Microsoft.Extensions.Configuration.Json`
-- `.Tests` projects: `AutoFixture.Idioms`, `AutoFixture.Xunit3`, `EvilBaschdi.Testing`, `AwesomeAssertions`, `NSubstitute`, `Xunit`, etc.
+- `.Tests` projects: `AutoFixture.Idioms`, `AutoFixture.Xunit3`, `SWalter.Testing`, `AwesomeAssertions`, `NSubstitute`, `Xunit`, etc.
 
 ## Naming Conventions & File Organization
 
